@@ -14,6 +14,7 @@
     "debug": "~2.6.3",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "express": "~4.15.2",
+    "express-mysql-session": "^1.2.2",
     "express-session": "^1.15.6",
     "fullcalendar": "^3.5.1",
     "moment": "^2.18.1",

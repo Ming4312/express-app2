@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session =require('express-session');
-
+var mysqlStore = require("express-mysql-session")(session);
 var index = require('./routes/index');
 var users = require('./routes/users');
 var api = require("./routes/api");
@@ -24,11 +24,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser());
+var sessionStore = new mysqlStore({
+  host: '127.0.0.1',
+  user: 'root',
+  password: 'P@ssw0rd',
+  database: 'session_store',
+  port: 3306
+
+})
+
 app.use(session({
   secret: 'testing',
   cookie: {maxAge: 3600000},
   resave: true,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: sessionStore
 }))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);

@@ -1,0 +1,26 @@
+extends layout
+
+block javascripts
+    script(src="/javascripts/login.js")
+block content
+    div.row
+        div.col
+            h1.page-header
+                | Login
+    div.row
+        div.col
+            p.bg-danger(type="hidden", id="errorMessage")
+    div.row
+        div.col
+            form(id="loginForm",action='/users/login', method='POST')
+                div.form-group
+                    label(for="username")
+                        | Username:
+                    input(type="text", class="form-control", id="username", name="username")
+                div.form-group
+                    label(for="password")
+                        | Password:
+                    input(type="password", class="form-control", id="password", name="password")
+                button(type="submit", class="btn btn-default")
+                    | Submit
+                    

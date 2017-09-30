@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    div.row
+        div.col
+            h1.page-header
+                | Register
+    div.row
+        div.col
+            form(action="/users/register", method="POST", id="registerForm")
+                div.form-group
+                    label(for="username")
+                        | Username:
+                    input(type="text", class="form-control", id="username", name="username")
+                div.form-group
+                    label(for="password")
+                        | Password:
+                    input(type="password", class="form-control", id="password", name="password")
+                div.form-group
+                    label(for="reEntryPassword")
+                        | Re-entry your password:
+                    input(type="password", class="form-control", id="reEntryPassword", name="reEntryPassword")
+                button(type="submit", class="btn btn-default")
+                    | Submit
+                    

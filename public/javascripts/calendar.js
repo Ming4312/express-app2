@@ -95,7 +95,7 @@ $(document).ready(function(){
         var cdate = $('#calendar').fullCalendar('getDate');
         var date = new Date(cdate.format());
         var lastDay = new Date(date.getFullYear(), date.getMonth()+1, 0);
-        var lastDayWithSlashes = lastDay.getFullYear() + '-' + (lastDay.getMonth() + 1) + '-' + (lastDay.getDate()) ;
+        var lastDayWithSlashes = lastDay.getFullYear() + '-' + (lastDay.getMonth() + 2) + '-' + (1) ;
         return lastDayWithSlashes;
     }
 })

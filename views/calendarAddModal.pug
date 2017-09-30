@@ -1,0 +1,55 @@
+mixin newModal(modalId, listTitle, fetchURL, buttonOptions)
+    div(id=modalId, class="modal fade", role="dialog")
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    if buttonOptions.indexOf('close') >= 0
+                        button(type="button", class="close", data-dismiss="modal") &times;
+                    h4.modal-title= listTitle
+                div.modal-body 
+                    form(action=fetchURL, method="POST", id="calendarForm")
+                        table
+                            tr
+                                td
+                                    input(type="hidden", name="eventId", id="eventId")
+                            tr 
+                                td
+                                    label
+                                        | out:
+                                td
+                                    input(type="number", step="0.01", name="spending_out", id="spending_out", class="form-control")
+                            tr
+                                td
+                                    label
+                                        | time:
+                                td
+                                    div(class='input-group date', id='datetimepicker')
+                                        input(type='text', class="form-control", id="eventTime", name="eventTime")
+                                        span.input-group-addon
+                                            span.glyphicon.glyphicon-time
+                            tr
+                                td
+                                    label
+                                        | type:
+                                td
+                                    select.selectpicker.form-control(id="type", name="type")
+                                        for item in options.data
+                                            option(value=item.id)
+                                                | #{item.type_name}
+                            tr 
+                                td
+                                    input(type="hidden", id="date", name="date")
+                                       
+                            tr
+                                td
+                                    label
+                                        | remark:
+                                td
+                                    input(type="text", name="remark", id="remark", class="form-control")
+                div.modal-footer
+                    if buttonOptions.indexOf('add') >= 0 || buttonOptions.indexOf('update') >= 0
+                        button(type="button",class="btn btn-default", onclick="$('#"+modalId+" #calendarForm').submit()", id="submitButton") Submit
+                    if buttonOptions.indexOf('close') >= 0
+                        button(type="button",class="btn btn-default",data-dismiss="modal") Close
+                    if buttonOptions.indexOf('delete') >= 0
+                        button(type="button",class="btn btn-danger", id="deleteButton") Delete

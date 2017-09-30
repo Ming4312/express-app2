@@ -1,0 +1,19 @@
+extends layout
+block stylesheets
+    link(rel='stylesheet', href='/modules/fullcalendar/dist/fullcalendar.css')
+    link(rel='stylesheet', href='/modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
+block javascripts
+    script(src='/modules/fullcalendar/dist/fullcalendar.js')
+    script(src='/modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
+    script(src="javascripts/calendar.js")
+block content
+    div.row
+        div.col
+            h1.page-header
+                | Calendar
+    div.row
+        div.col
+            div#calendar
+            include calendarAddModal
+            +newModal('addingModal', 'new record', '/api/addNewEvent', ['add', 'close'])
+            +newModal('updatingModal', 'update form', '/api/updateEvent', ['update', 'delete', 'close'])

@@ -1,8 +1,9 @@
 var mysql =require("mysql");
+var config = require("./config");
 var pool =  mysql.createPool({
-        host: '127.0.0.1',
-        user: 'root',
-        password: 'P@ssw0rd',
+        host: config.database.localhost,
+        user: config.database.user,
+        password: config.database.password,
         database: 'mystock',
         port: 3306
 });

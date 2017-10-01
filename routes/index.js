@@ -6,13 +6,11 @@ var request = require('request');
 /* GET home page. */
 router.use(function(req,res,next){
     req.session.loginUser ? res.locals.isLogin=true : res.locals.isLogin = false;
-    /*if(req.session.loginUser){
-        res.locals.isLogin = true;
-    }else{
-        res.locals.isLogin = false;
-    }*/
     next();
 })
+router.use('/calendar', function(req,res,next){
+    req.session.loginUser ? next() : res.redirect('/users/login');
+});
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express'});
 });

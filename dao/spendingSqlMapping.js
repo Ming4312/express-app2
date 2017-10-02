@@ -7,7 +7,7 @@ var daily_spending = {
     updateEvent: 'update daily_spending set spending_out=?, type=?, remark=?, date=?, modified_date=? where id=?',
     insertNewEvent: 'insert into daily_spending(userid, spending_out, type, remark, date, created_date, modified_date) value (?,?,?,?,?,?,?)',
     queryUserByName: 'select * from users where username=?',
-    insertNewUser: 'insert into users(username, password, role, email, created_date) value (?,?,?,?,?)'
+    insertNewUser: 'insert into users(username, password, role, email, created_date) value (?,?,?,?,?)',
 };
 
 module.exports = daily_spending;

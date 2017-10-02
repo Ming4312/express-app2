@@ -59,6 +59,14 @@ router.post('/register', function(req, res, next){
     })
     
 })
-
+router.post('/usernameExists', function(req, res, next){
+    spendingDao.queryUserByName(req, res, next, function(data){
+        if(data[0] == undefined)
+            res.send(true);
+        else
+            res.send(false);
+        
+    })
+})
 
 module.exports = router;
